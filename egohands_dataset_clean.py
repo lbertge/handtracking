@@ -101,10 +101,10 @@ def get_bbox_visualize(base_path, dir):
         if not os.path.exists(csv_path + ".csv"):
             cv2.putText(img, "DIR : " + dir + " - " + tail, (20, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.75, (77, 255, 9), 2)
-            cv2.imshow('Verifying annotation ', img)
+            # cv2.imshow('Verifying annotation ', img)
             save_csv(csv_path + ".csv", csvholder)
             print("===== saving csv file for ", tail)
-        cv2.waitKey(2)  # close window when a key press is detected
+        #cv2.waitKey(2)  # close window when a key press is detected
 
 
 def create_directory(dir_path):
@@ -199,6 +199,7 @@ def rename_files(image_dir):
                 else:
                     break
 
+    print("Generating CSV")
     generate_csv_files("egohands/_LABELLED_SAMPLES/")
 
 def extract_folder(dataset_path):
@@ -229,4 +230,5 @@ EGOHANDS_DATASET_URL = "http://vision.soic.indiana.edu/egohands_files/egohands_d
 EGO_HANDS_FILE = "egohands_data.zip"
 
 
-download_egohands_dataset(EGOHANDS_DATASET_URL, EGO_HANDS_FILE)
+if __name__ == '__main__':
+    download_egohands_dataset(EGOHANDS_DATASET_URL, EGO_HANDS_FILE)
